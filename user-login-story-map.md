@@ -209,3 +209,49 @@ Legend: 💬 Comment  📝 Task  ⚠️ Risk
 | T5 | 4.1 | OTP logic: 10-min expiry, 3 attempts, resend | — | Todo |
 | T6 | 4.2 | Write all error message copy in FI / SV / EN | — | Todo |
 | T7 | 2.2 | Integrate SMS provider for Finnish/Swedish numbers (R2) | — | Todo |
+
+---
+
+### Mermaid Diagram
+
+```mermaid
+graph LR
+  A1[1. Open App] --> A2[2. View Login Screen]
+  A2 --> A3[3. Choose Method]
+  A3 --> A4[4. Authenticate]
+  A4 --> A5[5. Home Feed]
+
+  subgraph R1_MVP[R1 MVP]
+    S1_1[1.1 Go straight to login]
+    S1_2[1.2 Expired session handling]
+    S2_1[2.1 See login options]
+    S3_1[3.1 Google OAuth login]
+    S3_2[3.2 New user to onboarding]
+    S4_1[4.1 Enter and validate OTP]
+    S4_2[4.2 Auth error handling]
+    S5_1[5.1 Personalized home feed]
+    S5_2[5.2 New user home feed]
+  end
+
+  subgraph R2
+    S2_2[2.2 OTP via SMS]
+    S4_3[4.3 Brute force protection]
+  end
+
+  subgraph Future
+    SF1[Apple / Facebook OAuth]
+  end
+
+  A1 --> S1_1
+  A1 --> S1_2
+  A2 --> S2_1
+  A2 --> S2_2
+  A3 --> S3_1
+  A3 --> S3_2
+  A3 --> SF1
+  A4 --> S4_1
+  A4 --> S4_2
+  A4 --> S4_3
+  A5 --> S5_1
+  A5 --> S5_2
+```

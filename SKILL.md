@@ -176,6 +176,8 @@ An alternative to the ASCII map. Use `graph LR` (left-to-right) to mirror story 
 - Backbone activities → top-level nodes (outside all subgraphs)
 - Stories → child nodes, grouped by release
 - Release groupings → `subgraph` blocks
+- **Node labels:** avoid special characters (`→`, `&`, `"`, `()`). Use plain text equivalents (`to`, `and`) for maximum compatibility across renderers (Miro, GitHub, Notion).
+- **Subgraph titles:** use `subgraph R1_MVP[R1 MVP]` — avoid quoted syntax `["R1 (MVP)"]` which requires Mermaid v9+.
 
 When the user asks for Mermaid output, generate the current map in this format — replacing or alongside the ASCII, per user preference. Default to ASCII during coaching mode; offer Mermaid as an alternative when presenting a final or exported map. Note: Mermaid only renders in compatible environments (GitHub, Notion, some chat surfaces) — mention this if the context is unclear.
 
@@ -183,7 +185,7 @@ When the user asks for Mermaid output, generate the current map in this format �
 graph LR
   A1[Activity 1] --> A2[Activity 2]
 
-  subgraph R1_MVP["R1 (MVP)"]
+  subgraph R1_MVP[R1 MVP]
     S1_1[Story 1.1]
     S1_2[Story 1.2]
     S2_1[Story 2.1]
