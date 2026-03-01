@@ -1,6 +1,8 @@
 # User Story Mapping Skill for Claude
 
-A Claude skill for collaborative user story mapping based on [Jeff Patton's methodology](https://www.jpattonassociates.com/story-mapping/). Helps product teams break down requirements into structured, visual story maps with release planning.
+A Claude skill for collaborative user story mapping based on [*User Story Mapping* by Jeff Patton](https://www.jpattonassociates.com/story-mapping/). Helps product teams break down requirements into structured, visual story maps with release planning.
+
+> Inspired by Jeff Patton's *User Story Mapping* (O'Reilly, 2014) — the definitive guide to breaking down work into user journeys, backbone activities, and release slices.
 
 ## What It Does
 
@@ -44,9 +46,17 @@ mkdir -p ~/.claude/skills/user-story-mapping
 cp SKILL.md ~/.claude/skills/user-story-mapping/SKILL.md
 ```
 
+### Claude.ai (Projects)
+
+1. Open a [Claude Project](https://claude.ai/projects)
+2. Go to **Project Settings → Custom Instructions**
+3. Paste the full contents of `SKILL.md` into the instructions field
+
+Claude will now use the skill for all conversations in that project.
+
 ### Other Claude environments
 
-Check your platform's documentation for where to place skill files.
+Check your platform's documentation for where to place skill files. Generally, look for a "system prompt", "custom instructions", or "skills" directory setting.
 
 ---
 
@@ -111,7 +121,7 @@ graph LR
   A3 --> A4[Authenticate]
   A4 --> A5[Home Feed]
 
-  subgraph R1_MVP["R1 (MVP)"]
+  subgraph R1_MVP[R1 MVP]
     S1_1[Straight to Login]
     S3_1[Google + OTP]
     S4_1[OTP Validation]
@@ -146,8 +156,11 @@ graph LR
 
 ## Example Maps
 
-- [`user-login-story-map.md`](user-login-story-map.md) — User login flow for a Finnish sports gear marketplace (generated in coaching mode)
-- [`add-item-to-cart-story-map.md`](add-item-to-cart-story-map.md) — Add to cart for an e-commerce app (generated in generation mode)
+| Map | Feature | Mode | Includes |
+|-----|---------|------|----------|
+| [`user-login-story-map.md`](user-login-story-map.md) | User login — Finnish sports gear marketplace | Coaching | OTP auth, Google OAuth, session handling, localization (FI/SV/EN) |
+| [`add-item-to-cart-story-map.md`](add-item-to-cart-story-map.md) | Add item to cart — e-commerce app | Generation | Inventory limits, variant selection, cart persistence, race condition risks |
+| [`book-a-flight-story-map.md`](book-a-flight-story-map.md) | Book a flight — travel app | Generation | Search, seat selection, guest checkout, payment failure handling, Mermaid diagram |
 
 ---
 
