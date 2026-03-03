@@ -319,3 +319,53 @@ When the user asks to export to an external tool, follow this pattern:
   - Release grouping → Cycle or Milestone
 - **MCP:** https://github.com/jerhadf/linear-mcp-server
 - **Fallback:** Mermaid diagram or markdown file
+
+---
+
+## Output Formatting
+
+When presenting the user story map output, always include the following in addition to the ASCII map and markdown details:
+
+### 1. Mermaid.js Journey Diagram
+
+Provide a Mermaid.js journey diagram that visualizes the user journey and each story as steps or tasks. Use the following structure as an example:
+
+```mermaid
+journey
+    title [Product/Feature Name] User Journey
+    section [Activity 1 Name]
+      Story 1.1: 5: User
+      Story 1.2: 3: User
+    section [Activity 2 Name]
+      Story 2.1: 4: User
+      Story 2.2: 2: User
+    section [Activity N Name]
+      Story N.x: 1: User
+```
+- Each activity becomes a `section`.
+- Each story is a step within that section (label as "Story X.Y: [Short Title]").
+- User is the default actor.
+- You may use numbers (1-5) for effort or importance if provided by the user.
+
+The journey diagram should be included by default for every map.
+
+### 2. Tasks CSV Export Block
+
+After the visualizations, provide a CSV block containing the tasks in the map, using the following columns: `Release, Activity, Story, Task, Owner, Status`. Format it like:
+
+```csv
+Release,Activity,Story,Task,Owner,Status
+R1 (MVP),Login,Story 1.1,**Set up authentication flow**,Alice,Todo
+R1 (MVP),Login,Story 1.2,**Design error messaging**,Bob,In Progress
+R2,Profile Management,Story 2.3,Update user avatar,Carol,Todo
+```
+
+- All tasks under "Release 1" (usually "R1 (MVP)") must have their task names **bolded** by wrapping them in double asterisks (`**task**`) in the CSV.
+- For other releases, leave task text unbolded.
+- The CSV should always be included for easy export, even if no tasks exist (list only headers if empty).
+
+### 3. General
+
+- Always include both the Mermaid journey diagram and the tasks CSV block along with the standard outputs.
+- If Release 1 is titled differently (e.g., "Release 1" or "MVP"), treat it as equivalent to "R1 (MVP)" for the bolding rule.
+- Mention this formatting in any summary or intro when generating outputs for the user.
